@@ -1,0 +1,94 @@
+unit OCRUtils;
+
+interface
+
+uses Graphics;
+
+type
+  TModel = array [1..100, 1..100] of Boolean;
+  { Chaque йlйment du tableau reprйsente un pixel - True si noir, False si blanc }
+  {Каждый элемент массива представляет собой пиксель - True, если черный, белый - если False}
+
+function CreateModel(Model: Char): TModel; overload
+{ Crйe un modиle а partir d'un caractиre }
+{Создайте модуль из а символов}
+
+function CreateModel(Model: TBitmap): TModel; overload
+{ Crйe un modиle а partir d'un bitmap }
+{Создать модуль из растрового а}
+
+function CompareModels(A, B: TModel): Integer;
+{ Compare deux modиles et indique le nombre de valeurs diffйrentes }
+{Сравнивает два модуля и сообщил количество различных значений}
+
+implementation
+
+function CreateModel(Model: Char): TModel; { Crйe un modиle depuis un caractиre }{Создать модуль из одного символа}
+Var
+ Bmp: TBitmap;
+ I, J: Integer;
+ W, H: Integer;
+begin
+ { On йcrit avec une police dans un bitmap et on regarde les couleurs des pixels }
+ {Она написана шрифтом в виде растрового и смотреть цвета пикселей}
+ {По письменному со шрифтом в растровое и смотреть цвета пикселей}
+ Bmp := TBitmap.Create;
+ Bmp.Width := 100;
+ Bmp.Height := 100;
+ Bmp.PixelFormat := pf1Bit;
+ Bmp.Canvas.Font.Name := 'Arial';
+ Bmp.Canvas.Font.Size := 72; { On crйe le bitmap tampon ... on initialise ... }
+ {Мы создали растрового изображения буфера при инициализации ... ...}
+ W := Bmp.Canvas.TextWidth(Model);
+ H := Bmp.Canvas.TextHeight(Model);
+ Bmp.Canvas.TextOut(50 - (W div 2), 50 - (H div 2), Model); { On йcrit le caractиre au centre ... }{Мы пишем символ в центре ...}
+ for I := 0 to 99 do
+  for J := 0 to 99 do { Si bitmap blanc, modиle False, sinon, modиle True }
+  {Если белые растровые изображения модуль False, в противном случае модуль True}
+   if Bmp.Canvas.Pixels[I, J] = clWhite then Result[I + 1, J + 1] := False else Result[I + 1, J + 1] := True;
+
+ Bmp.Free;
+end;
+
+function CreateModel(Model: TBitmap): TModel; overload { Crйe un modиle depuis un bitmap }{Создать модуль из растрового изображения}
+Var
+ I, J: Integer;
+begin
+ Model.Width := 100;
+ Model.Height := 100;
+ Model.PixelFormat := pf1Bit;
+ for I := 0 to 99 do
+  for J := 0 to 99 do { Si le bitmap est blanc, modиle False, sinon, modиle True }
+  {Если точечный рисунок белый, модуль False, в противном случае модуль True}
+   if Model.Canvas.Pixels[I, J] = clWhite then Result[I + 1, J + 1] := False else Result[I + 1, J + 1] := True;
+end;
+
+function CompareModels(A, B: TModel): Integer;
+Var
+ I, J: Integer;
+begin
+ Result := 0;
+ for I := 1 to 100 do
+  for J := 1 to 100 do
+   begin
+    { Si le modиle dessinй n'a pas une zone du modиle enregistrй, on enlиve 100 points }
+	{Если модуль не обратить площадь зарегистрированного модуля, удален на 100 пунктов}
+    if (A[I, J] = False) and (B[I, J] = True) then Dec(Result, 100);
+    { Si le modиle enregistrй n'a pas une zone du modиle dessinй, on enlиve 15 points }
+	{Если зарегистрированный модуль модульная рисует, мы удалили 15 пунктов}
+    if (A[I, J] = True) and (B[I, J] = False) then Dec(Result, 15);
+    { Si les deux modиles ont la mкme zone coloriйe en noir, on ajoute 100 points }
+	{Если обе модели mкme область окрашена в черный, 100 точек}
+    if (A[I, J] = True) and (B[I, J] = True) then Inc(Result, 100);
+   end;
+
+ { On limite а 0 (pas d'intйrкt fonctionnel mais зa fait plus joli) }
+ {На а предел 0 (никакого практического интереса, но зaто красивее)}
+ if Result < 0 then Result := 0;
+
+ { Cet йquilibre de points permet de dйsigner avec la plus grande prйcision le caractиre
+   que l'on a йcrit. }
+   {Этот баланс очков позволяет дизайнеру с большей точностью символов, что один в письменном виде. }
+end;
+
+end.

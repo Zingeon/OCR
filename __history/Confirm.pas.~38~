@@ -1,0 +1,95 @@
+unit Confirm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Main;
+
+type
+  TForm1 = class(TForm)
+    Yes: TButton;
+    No: TButton;
+    Label1: TLabel;
+    procedure YesClick(Sender: TObject);
+    procedure NoClick(Sender: TObject);
+  private
+    { Private declarations }
+    function GetBtnClick: TNotifyEvent;
+    procedure SetBtnClick(AVal: TNotifyEvent);
+  public
+    { Public declarations }
+    property BtnClick: TNotifyEvent read GetBtnClick write SetBtnClick;
+  end;
+
+var
+  Form1: TForm1;
+  some: string;
+
+implementation
+
+{$R *.dfm}
+
+function TForm1.GetBtnClick: TNotifyEvent;
+begin
+  Result := Yes.OnClick;
+end;
+
+procedure TForm1.NoClick(Sender: TObject);
+
+Var
+ S: String;
+  W, H: Integer;
+begin
+ if InputQuery('Voir un modèle', 'Entrez le caractère dont vous voulez voir le modèle (caractères majuscules seulement) :', S) then
+  begin
+   S := Copy(S, 1, 1);
+   if (S[1] in ['A'..'Z']) then
+    begin
+      showMessage('qwerty');
+    end;
+  end;
+Form1.close;
+end;
+
+procedure TForm1.SetBtnClick(AVal: TNotifyEvent);
+begin
+  Yes.OnClick := AVal;
+end;
+
+procedure TForm1.YesClick(Sender: TObject);
+var
+MyHandle: THandle;
+begin
+   case BestIndex of
+65: begin LengthCharArr := Length(AllChars[65]); SetLength(AllChars[65], LengthCharArr+1); AllChars[65][LengthCharArr] := Model; end;
+66: begin LengthCharArr := Length(AllChars[66]); SetLength(AllChars[66], LengthCharArr+1); AllChars[66][LengthCharArr] := Model; end;
+67: begin LengthCharArr := Length(AllChars[67]); SetLength(AllChars[67], LengthCharArr+1); AllChars[67][LengthCharArr] := Model; end;
+68: begin LengthCharArr := Length(AllChars[68]); SetLength(AllChars[68], LengthCharArr+1); AllChars[68][LengthCharArr] := Model; end;
+69: begin LengthCharArr := Length(AllChars[69]); SetLength(AllChars[69], LengthCharArr+1); AllChars[69][LengthCharArr] := Model; end;
+70: begin LengthCharArr := Length(AllChars[70]); SetLength(AllChars[70], LengthCharArr+1); AllChars[70][LengthCharArr] := Model; end;
+71: begin LengthCharArr := Length(AllChars[71]); SetLength(AllChars[71], LengthCharArr+1); AllChars[71][LengthCharArr] := Model; end;
+72: begin LengthCharArr := Length(AllChars[72]); SetLength(AllChars[72], LengthCharArr+1); AllChars[72][LengthCharArr] := Model; end;
+73: begin LengthCharArr := Length(AllChars[73]); SetLength(AllChars[73], LengthCharArr+1); AllChars[73][LengthCharArr] := Model; end;
+74: begin LengthCharArr := Length(AllChars[74]); SetLength(AllChars[74], LengthCharArr+1); AllChars[74][LengthCharArr] := Model; end;
+75: begin LengthCharArr := Length(AllChars[75]); SetLength(AllChars[75], LengthCharArr+1); AllChars[75][LengthCharArr] := Model; end;
+76: begin LengthCharArr := Length(AllChars[76]); SetLength(AllChars[76], LengthCharArr+1); AllChars[76][LengthCharArr] := Model; end;
+77: begin LengthCharArr := Length(AllChars[77]); SetLength(AllChars[77], LengthCharArr+1); AllChars[77][LengthCharArr] := Model; end;
+78: begin LengthCharArr := Length(AllChars[78]); SetLength(AllChars[78], LengthCharArr+1); AllChars[78][LengthCharArr] := Model; end;
+79: begin LengthCharArr := Length(AllChars[79]); SetLength(AllChars[79], LengthCharArr+1); AllChars[79][LengthCharArr] := Model; end;
+80: begin LengthCharArr := Length(AllChars[80]); SetLength(AllChars[80], LengthCharArr+1); AllChars[80][LengthCharArr] := Model; end;
+81: begin LengthCharArr := Length(AllChars[81]); SetLength(AllChars[81], LengthCharArr+1); AllChars[81][LengthCharArr] := Model; end;
+82: begin LengthCharArr := Length(AllChars[82]); SetLength(AllChars[82], LengthCharArr+1); AllChars[82][LengthCharArr] := Model; end;
+83: begin LengthCharArr := Length(AllChars[83]); SetLength(AllChars[83], LengthCharArr+1); AllChars[83][LengthCharArr] := Model; end;
+84: begin LengthCharArr := Length(AllChars[84]); SetLength(AllChars[84], LengthCharArr+1); AllChars[84][LengthCharArr] := Model; end;
+85: begin LengthCharArr := Length(AllChars[85]); SetLength(AllChars[85], LengthCharArr+1); AllChars[85][LengthCharArr] := Model; end;
+86: begin LengthCharArr := Length(AllChars[86]); SetLength(AllChars[86], LengthCharArr+1); AllChars[86][LengthCharArr] := Model; end;
+87: begin LengthCharArr := Length(AllChars[87]); SetLength(AllChars[87], LengthCharArr+1); AllChars[87][LengthCharArr] := Model; end;
+88: begin LengthCharArr := Length(AllChars[88]); SetLength(AllChars[88], LengthCharArr+1); AllChars[88][LengthCharArr] := Model; end;
+89: begin LengthCharArr := Length(AllChars[89]); SetLength(AllChars[89], LengthCharArr+1); AllChars[89][LengthCharArr] := Model; end;
+90: begin LengthCharArr := Length(AllChars[90]); SetLength(AllChars[90], LengthCharArr+1); AllChars[90][LengthCharArr] := Model; end;
+   end;
+Form1.close;
+end;
+
+end.

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.026,=E:\Учеба\Диплом\OCR_Characters_Recognize\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.263,E:\Учеба\Диплом\OCR_Characters_Recognize\Confirm.dfm=E:\Учеба\Диплом\OCR_Characters_Recognize\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.263,E:\Учеба\Диплом\OCR_Characters_Recognize\Confirm.pas=E:\Учеба\Диплом\OCR_Characters_Recognize\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

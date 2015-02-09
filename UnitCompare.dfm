@@ -1,0 +1,44 @@
+object CompareForm: TCompareForm
+  Left = 936
+  Top = 130
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsToolWindow
+  Caption = 'Weight resemblance'
+  ClientHeight = 871
+  ClientWidth = 236
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Visible = True
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object List: TStringGrid
+    Left = 0
+    Top = 0
+    Width = 236
+    Height = 871
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    Align = alClient
+    ColCount = 2
+    DefaultColWidth = 110
+    DefaultRowHeight = 18
+    Enabled = False
+    FixedCols = 0
+    RowCount = 28
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
+    TabOrder = 0
+    ExplicitHeight = 480
+    ColWidths = (
+      130
+      136)
+  end
+end
